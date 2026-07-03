@@ -1,0 +1,17 @@
+{
+  "name": "ph-github-top",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Screenshot-friendly Top GitHub users in the Philippines",
+  "type": "module",
+  "scripts": {
+    "sync": "bun run scripts/sync-data.ts",
+    "dev": "vite",
+    "build": "bun run sync && vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.3",
+    "vite": "^7.3.1"
+  }
+}

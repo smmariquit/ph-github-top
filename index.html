@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Top GitHub Users in the Philippines</title>
+    <meta
+      name="description"
+      content="Screenshot-friendly leaderboard of top GitHub developers in the Philippines."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/src/styles.css" />
+  </head>
+  <body>
+    <div id="app">
+      <header class="site-header" data-screenshot-hide>
+        <div class="site-header__inner">
+          <div>
+            <p class="eyebrow">Philippines · GitHub</p>
+            <h1>Top developers</h1>
+            <p class="lede">
+              Clean cards built for screenshots — pick a metric, frame size, and
+              how many rows to show.
+            </p>
+          </div>
+          <div class="header-actions">
+            <button type="button" class="btn btn--ghost" id="btn-screenshot-mode">
+              Screenshot mode
+            </button>
+            <a
+              class="btn btn--primary"
+              href="https://github.com/gayanvoice/top-github-users"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Data source
+            </a>
+          </div>
+        </div>
+      </header>
+
+      <aside class="controls" data-screenshot-hide>
+        <section class="control-group">
+          <h2>Metric</h2>
+          <div class="segmented" role="tablist" aria-label="Ranking metric">
+            <button type="button" class="segmented__btn is-active" data-metric="followers">
+              Followers
+            </button>
+            <button type="button" class="segmented__btn" data-metric="public_contributions">
+              Public
+            </button>
+            <button type="button" class="segmented__btn" data-metric="total_contributions">
+              Total
+            </button>
+          </div>
+        </section>
+
+        <section class="control-group">
+          <h2>Rows</h2>
+          <div class="segmented" role="group" aria-label="Row count">
+            <button type="button" class="segmented__btn" data-count="5">5</button>
+            <button type="button" class="segmented__btn is-active" data-count="10">10</button>
+            <button type="button" class="segmented__btn" data-count="15">15</button>
+          </div>
+        </section>
+
+        <section class="control-group">
+          <h2>Frame</h2>
+          <div class="segmented" role="group" aria-label="Screenshot frame">
+            <button type="button" class="segmented__btn is-active" data-frame="square">
+              1:1
+            </button>
+            <button type="button" class="segmented__btn" data-frame="landscape">
+              16:9
+            </button>
+            <button type="button" class="segmented__btn" data-frame="story">
+              9:16
+            </button>
+          </div>
+        </section>
+
+        <section class="control-group">
+          <h2>Theme</h2>
+          <div class="segmented" role="group" aria-label="Color theme">
+            <button type="button" class="segmented__btn is-active" data-theme="light">
+              Light
+            </button>
+            <button type="button" class="segmented__btn" data-theme="dark">
+              Dark
+            </button>
+          </div>
+        </section>
+
+        <p class="meta-note" id="meta-note">Loading data…</p>
+      </aside>
+
+      <main class="stage">
+        <div class="frame-shell" id="frame-shell">
+          <article class="card" id="shot-card" aria-live="polite">
+            <header class="card__header">
+              <div class="card__flag" aria-hidden="true"></div>
+              <div>
+                <p class="card__eyebrow">GitHub · Philippines</p>
+                <h2 class="card__title" id="card-title">Top by Followers</h2>
+                <p class="card__subtitle" id="card-subtitle">Top 10 developers</p>
+              </div>
+            </header>
+            <ol class="leaderboard" id="leaderboard"></ol>
+            <footer class="card__footer">
+              <span id="card-updated">Updated —</span>
+              <span class="card__brand">ph-github-top</span>
+            </footer>
+          </article>
+        </div>
+        <p class="stage-hint" data-screenshot-hide>
+          Tip: use <kbd>Screenshot mode</kbd> to hide controls, then capture the
+          card. Shareable URLs work too — e.g.
+          <code>?metric=followers&count=10&frame=square&theme=dark</code>
+        </p>
+      </main>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
