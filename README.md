@@ -12,8 +12,8 @@ After deploy: GitHub Pages at `https://smmariquit.github.io/ph-github-top/`
 
 ```sh
 bun install
-bun run sync   # fetch latest PH rankings
-bun run dev    # http://localhost:5174
+bun run sync # fetch latest PH rankings
+bun run dev # http://localhost:5174
 bun run build
 bun run preview
 ```
