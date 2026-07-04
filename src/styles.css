@@ -358,6 +358,28 @@ h1 {
   line-height: 1.5;
 }
 
+.site-footer {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.site-footer a {
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.site-footer a:hover {
+  color: var(--text);
+  text-decoration: underline;
+}
+
+.site-footer span {
+  margin: 0 0.5rem;
+  opacity: 0.5;
+}
+
 code,
 kbd {
   font-family: var(--mono);
