@@ -2,7 +2,7 @@
 
 Screenshot-friendly leaderboard of top GitHub developers in the **Philippines**.
 
-Data is synced from [gayanvoice/top-github-users](https://github.com/gayanvoice/top-github-users) (Philippines location filter). This project renders clean cards you can capture for posts, slides, or stories — no scrolling through giant markdown tables.
+Data is synced from [gayanvoice/top-github-users](https://github.com/gayanvoice/top-github-users) (Philippines location filter). This project renders clean cards you can capture for posts, slides, or stories: no scrolling through giant markdown tables.
 
 ## Live
 
