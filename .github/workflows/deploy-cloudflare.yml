@@ -20,18 +20,30 @@ jobs:
       - run: bun install --frozen-lockfile
       - run: bun run build
 
+      # Skip (with a notice) instead of failing every push while the repo secret is missing.
+      - name: Check Cloudflare token
+        id: token
+        env:
+          CF_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        run: |
+          if [ -n "$CF_TOKEN" ]; then echo "ok=true" >> "$GITHUB_OUTPUT"; else echo "ok=false" >> "$GITHUB_OUTPUT"; echo "::notice::CLOUDFLARE_API_TOKEN is not set, skipping deploy"; fi
+
       - name: Deploy preview
-        if: github.event_name == 'pull_request'
+        if: steps.token.outputs.ok == 'true' && github.event_name == 'pull_request'
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          packageManager: npm
+          wranglerVersion: "4.90.0"
           command: pages deploy dist --project-name=ph-github-top --branch=pr-${{ github.event.pull_request.number }}
 
       - name: Deploy production
-        if: github.ref == 'refs/heads/main'
+        if: steps.token.outputs.ok == 'true' && github.ref == 'refs/heads/main'
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          packageManager: npm
+          wranglerVersion: "4.90.0"
           command: pages deploy dist --project-name=ph-github-top --branch=main
